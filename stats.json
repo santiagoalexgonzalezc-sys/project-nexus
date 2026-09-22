@@ -1,45 +1,128 @@
 {
   "Elepho": {
     "Abilities": {
-      "RageQuit": 100
+      "Passive": {
+        "name": "Elephantine Fury",
+        "description": "Elepho gains Rage whenever he takes damage or deals damage to an enemy. At maximum Rage, he becomes enraged, gaining bonus attack damage and movement speed for a short duration.",
+        "rageGeneration": 10,
+        "maximumRage": 100,
+        "bonusAttackDamage": 20,
+        "bonusMovementSpeed": "15%",
+        "duration": 5
+      },
+
+      "Q": {
+        "name": "Raging Charge",
+        "description": "Elepho charges forward, damaging and knocking back enemies he collides with.",
+        "damage": 90,
+        "damageScaling": "80% AD",
+        "cooldown": 8,
+        "manaCost": 40,
+        "range": 500,
+        "knockbackDuration": 0.75
+      },
+
+      "W": {
+        "name": "Thunder Stomp",
+        "description": "Elepho slams the ground, dealing area damage and slowing enemies around him.",
+        "damage": 110,
+        "damageScaling": "70% AD + 50% AP",
+        "slow": "40%",
+        "slowDuration": 2,
+        "cooldown": 12,
+        "manaCost": 60,
+        "radius": 325
+      },
+
+      "E": {
+        "name": "Iron Hide",
+        "description": "Elepho hardens his body, gaining a shield and reducing incoming damage.",
+        "shield": 180,
+        "shieldScaling": "15% maximum Health",
+        "damageReduction": "20%",
+        "duration": 3,
+        "cooldown": 16,
+        "manaCost": 50
+      },
+
+      "RageQuit": {
+        "name": "Rage Quit",
+        "description": "Elepho unleashes all of his accumulated Rage, becoming massively empowered. His attacks deal bonus damage and his abilities gain enhanced effects.",
+        "requiredRage": 100,
+        "bonusAttackDamage": 60,
+        "bonusAttackSpeed": "30%",
+        "bonusMovementSpeed": "20%",
+        "bonusHealth": 250,
+        "duration": 8,
+        "cooldown": 90
+      }
     },
 
     "Stats": {
-        "baseHealth": 650,
+      "baseHealth": 650,
+      "healthPerLevel": 105,
 
-        "baseAttackDamage": 64,
+      "baseAttackDamage": 64,
+      "attackDamagePerLevel": 4.2,
 
-        "baseAbilityDamage": 60,
+      "baseAbilityDamage": 60,
+      "abilityDamagePerLevel": 3.5,
 
-        "baseAttackSpeed": "89%",
+      "baseAttackSpeed": "89%",
+      "attackSpeedPerLevel": "2.5%",
 
-        "baseArmour": 51,
-        "baseMagicResistance": 45,
+      "baseArmour": 51,
+      "armourPerLevel": 4.8,
 
-        "baseHealthRegen": 9.5,
+      "baseMagicResistance": 45,
+      "magicResistancePerLevel": 1.8,
 
-        "baseManaRegen": 7,
-        ,
+      "baseHealthRegen": 9.5,
+      "healthRegenPerLevel": 0.8,
 
-        "baseCriticalChance": "120%",
-        "baseCriticalDamage": "45%",
-        "baselethality": 90,
-        "baseArmourPenetration": "10%",
-        "baseMagicPenetration": "5%",
-        "baseAbilityHaste": 5,
-        "baseMovementSpeed": 320,
-        "baseLifeSteal": "45%",
-        "baseOmnivamp": "90%",
-        "baseHealPower": "120%",
-        "baseShieldPower": "45%",
-        "baseAttackrange": 90,
-        "baseTenacity": "120%",
-        "baseSlowResist": "45%"
+      "baseMana": 320,
+      "manaPerLevel": 45,
+
+      "baseManaRegen": 7,
+      "manaRegenPerLevel": 0.6,
+
+      "baseCriticalChance": "120%",
+      "baseCriticalDamage": "45%",
+
+      "baseLethality": 90,
+      "baseArmourPenetration": "10%",
+      "baseMagicPenetration": "5%",
+
+      "baseAbilityHaste": 5,
+
+      "baseMovementSpeed": 320,
+
+      "baseLifeSteal": "45%",
+      "baseOmnivamp": "90%",
+
+      "baseHealPower": "120%",
+      "baseShieldPower": "45%",
+
+      "baseAttackRange": 90,
+
+      "baseTenacity": "120%",
+      "baseSlowResist": "45%"
+    },
+
+    "Resources": {
+      "resourceType": "Rage",
+      "maximumResource": 100,
+      "resourceRegeneration": "Generated through combat"
+    },
+
+    "Classification": {
+      "role": "Fighter",
+      "secondaryRole": "Tank",
+      "damageType": "Physical",
+      "difficulty": 2
     }
-
-
-    
   }
 }
+
 
 
