@@ -93,10 +93,10 @@ const cooldowns = {
 const skills = {
     Q: {
         label: "Q",
-        cd: 3000,
+        cd: 2000,
         color: "#FF3333",
         name: "Fast Fire",
-        speed: 900,
+        speed: 1000,
         radius: 12,
         count: 1
     },
