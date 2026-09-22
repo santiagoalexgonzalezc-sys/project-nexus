@@ -15,6 +15,16 @@ playerSprite.onload = () => {
 };
 
 
+canvas.addEventListener('click', async () => {
+    try {
+        // Go fullscreen first
+        await canvas.requestFullscreen();
+    } catch (err) {
+        console.error("Error entering fullscreen/pointer lock: ", err);
+    }
+});
+
+
 
 // ============================================================
 // WORLD
