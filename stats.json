@@ -1,0 +1,45 @@
+{
+  "Elepho": {
+    "Abilities": {
+      "RageQuit": 100
+    },
+
+    "Stats": {
+        "baseHealth": 650,
+
+        "baseAttackDamage": 64,
+
+        "baseAbilityDamage": 60,
+
+        "baseAttackSpeed": "89%",
+
+        "baseArmour": 51,
+        "baseMagicResistance": 45,
+
+        "baseHealthRegen": 9.5,
+
+        "baseManaRegen": 7,
+        ,
+
+        "baseCriticalChance": "120%",
+        "baseCriticalDamage": "45%",
+        "baselethality": 90,
+        "baseArmourPenetration": "10%",
+        "baseMagicPenetration": "5%",
+        "baseAbilityHaste": 5,
+        "baseMovementSpeed": 320,
+        "baseLifeSteal": "45%",
+        "baseOmnivamp": "90%",
+        "baseHealPower": "120%",
+        "baseShieldPower": "45%",
+        "baseAttackrange": 90,
+        "baseTenacity": "120%",
+        "baseSlowResist": "45%"
+    }
+
+
+    
+  }
+}
+
+
