@@ -1,3 +1,16 @@
+// state.js
+
+import { CONFIG } from "./config.js";
+import { Camera } from "./camera.js";
+import { HUD } from "./hud.js";
+import { Input } from "./input.js";
+import { Player } from "./player.js";
+import { Projectile } from "./projectile.js";
+import { Renderer } from "./renderer.js";
+import { Skills } from "./skills.js";
+import { World } from "./world.js";
+
+
 import {
     MAP_WIDTH,
     MAP_HEIGHT,
