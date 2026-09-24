@@ -28,4 +28,36 @@ export function resizeCanvas() {
 
     viewport.height =
         window.innerHeight;
+
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+}
+
+export function render(deltaTime) {
+
+    // Clear screen
+    ctx.clearRect(
+        0,
+        0,
+        viewport.width,
+        viewport.height
+    );
+
+    // World rendering
+    ctx.save();
+
+    // Camera transformation
+    ctx.translate(
+        -camera.x,
+        -camera.y
+    );
+
+    drawMap();
+    updateProjectiles(deltaTime);
+    drawPlayer();
+
+    ctx.restore();
+
+    // Screen space rendering
+    drawHUD();
 }

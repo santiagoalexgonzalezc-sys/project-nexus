@@ -1,16 +1,5 @@
 // state.js
 
-import { CONFIG } from "./config.js";
-import { Camera } from "./camera.js";
-import { HUD } from "./hud.js";
-import { Input } from "./input.js";
-import { Player } from "./player.js";
-import { Projectile } from "./projectile.js";
-import { Renderer } from "./renderer.js";
-import { Skills } from "./skills.js";
-import { World } from "./world.js";
-
-
 import {
     MAP_WIDTH,
     MAP_HEIGHT,
@@ -52,6 +41,11 @@ export const camera = {
         cameraConfig.followSpeed
 };
 
+export const viewport = {
+    width: window.innerWidth,
+    height: window.innerHeight
+};
+
 export let viewWidth =
     window.innerWidth;
 
@@ -61,6 +55,8 @@ export let viewHeight =
 export function setViewSize(width, height) {
     viewWidth = width;
     viewHeight = height;
+    viewport.width = width;
+    viewport.height = height;
 }
 
 export const cooldowns = {
@@ -92,3 +88,75 @@ export const player = {
 
     directionRow: 0
 };
+
+// Initialize camera position
+camera.x = player.x - viewport.width / 2;
+camera.y = player.y - viewport.height / 2;
+
+// Window resize handler
+window.addEventListener("resize", () => {
+    viewport.width = window.innerWidth;
+    viewport.height = window.innerHeight;
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+});
+
+// Mouse tracking
+window.addEventListener("mousemove", (event) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = event.clientX - rect.left;
+    mouse.y = event.clientY - rect.top;
+});
+
+// Click to move
+window.addEventListener("mousedown", (event) => {
+    if (event.button !== 0) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const screenX = event.clientX - rect.left;
+    const screenY = event.clientY - rect.top;
+
+    // Convert screen to world coordinates
+    const worldX = screenX + camera.x;
+    const worldY = screenY + camera.y;
+
+    // Keep destination inside map
+    player.targetX = Math.max(
+        player.radius,
+        Math.min(worldX, MAP_WIDTH - player.radius)
+    );
+
+    player.targetY = Math.max(
+        player.radius,
+        Math.min(worldY, MAP_HEIGHT - player.radius)
+    );
+});
+
+// Space camera lock
+window.addEventListener("keydown", (event) => {
+    if (event.code === "Space") {
+        event.preventDefault();
+        camera.locked = true;
+    }
+});
+
+window.addEventListener("keyup", (event) => {
+    if (event.code === "Space") {
+        event.preventDefault();
+        camera.locked = false;
+    }
+});
+
+// Skill keyboard input
+window.addEventListener("keydown", (event) => {
+    if (event.code === "Space") return;
+    if (event.repeat) return;
+
+    const key = event.key.toUpperCase();
+    if (cooldowns[key] !== undefined) {
+        // Import dynamically to avoid circular dependency
+        import("./skills.js").then(({ fireSkill }) => {
+            fireSkill(key);
+        });
+    }
+});
