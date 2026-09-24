@@ -7,8 +7,7 @@ import {
     camera,
     player,
     mouse,
-    viewWidth,
-    viewHeight
+    viewport
 } from "./state.js";
 
 export function screenToWorld(
@@ -23,10 +22,10 @@ export function screenToWorld(
 
 export function clampCamera() {
 
-    if (viewWidth < MAP_WIDTH) {
+    if (viewport.width < MAP_WIDTH) {
 
         const maxX =
-            MAP_WIDTH - viewWidth;
+            MAP_WIDTH - viewport.width;
 
         camera.x = Math.max(
             0,
@@ -39,13 +38,13 @@ export function clampCamera() {
     else {
 
         camera.x =
-            (MAP_WIDTH - viewWidth) / 2;
+            (MAP_WIDTH - viewport.width) / 2;
     }
 
-    if (viewHeight < MAP_HEIGHT) {
+    if (viewport.height < MAP_HEIGHT) {
 
         const maxY =
-            MAP_HEIGHT - viewHeight;
+            MAP_HEIGHT - viewport.height;
 
         camera.y = Math.max(
             0,
@@ -58,7 +57,7 @@ export function clampCamera() {
     else {
 
         camera.y =
-            (MAP_HEIGHT - viewHeight) / 2;
+            (MAP_HEIGHT - viewport.height) / 2;
     }
 }
 
@@ -66,22 +65,22 @@ export function getCameraTarget() {
 
     let targetX =
         player.x -
-        viewWidth / 2;
+        viewport.width / 2;
 
     let targetY =
         player.y -
-        viewHeight / 2;
+        viewport.height / 2;
 
-    if (viewWidth >= MAP_WIDTH) {
+    if (viewport.width >= MAP_WIDTH) {
 
         targetX =
-            (MAP_WIDTH - viewWidth) / 2;
+            (MAP_WIDTH - viewport.width) / 2;
     }
 
-    if (viewHeight >= MAP_HEIGHT) {
+    if (viewport.height >= MAP_HEIGHT) {
 
         targetY =
-            (MAP_HEIGHT - viewHeight) / 2;
+            (MAP_HEIGHT - viewport.height) / 2;
     }
 
     return {
@@ -129,7 +128,7 @@ export function updateCamera(deltaTime) {
 
     if (
         mouse.x >=
-        viewWidth -
+        viewport.width -
         camera.edgeThreshold
     ) {
         moveX = 1;
@@ -144,7 +143,7 @@ export function updateCamera(deltaTime) {
 
     if (
         mouse.y >=
-        viewHeight -
+        viewport.height -
         camera.edgeThreshold
     ) {
         moveY = 1;
