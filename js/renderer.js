@@ -27,3 +27,4 @@ export function resizeCanvas() {
         window.innerWidth;
 
     viewport.height =
+        window.innerHeight;
